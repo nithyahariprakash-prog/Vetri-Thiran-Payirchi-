@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduGenie AI Assistant</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            resize: vertical;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result-box {
+            margin-top: 25px;
+            padding: 15px;
+            background-color: #eef7ee;
+            border-left: 5px solid #4CAF50;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>✨ EduGenie AI</h1>
+    
+    <form action="/ask" method="post">
+        <label for="prompt"><b>உங்கள் கேள்வியைக் கேட்கவும்:</b></label>
+        <textarea id="prompt" name="prompt" placeholder="Ask anything to EduGenie..." required>{{ prompt if prompt else '' }}</textarea>
+        <button type="submit">Submit / கேட்க</button>
+    </form>
+
+    {% if ai_response %}
+    <div class="result-box">
+        <h3>பதில்:</h3>
+        <p>{{ ai_response }}</p>
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
